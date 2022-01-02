@@ -1,0 +1,1 @@
+"/Applications/wechatwebdevtools.app/Contents/MacOS/cli" cloud functions deploy --e super-longevity-0vzqk --n quickstartFunctions --r --project "/Users/vincent/WeChatProjects/yptx_hc" --report_first --report
