@@ -8,6 +8,10 @@ Component({
       type: String,
       value: "/images/superconductor.jpeg"
     },
+    healerId: {
+      type: Number,
+      value: "271828"
+    },
     healerName: {
       type: String,
       value: "Superconductor"
