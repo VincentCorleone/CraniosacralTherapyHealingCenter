@@ -1,0 +1,6 @@
+<!--pages/healerDetail/healerDetail.wxml-->
+<scroll-view>
+<text>
+123123123</text>
+</scroll-view>
+<button></button>
