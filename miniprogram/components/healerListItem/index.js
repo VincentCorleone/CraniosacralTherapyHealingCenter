@@ -14,7 +14,7 @@ Component({
     },
     title: {
       type: String,
-      value: "生物动力学头荐骨手触疗愈执行"
+      value: "头荐骨抚触疗愈执行"
     },
     titleLevel: {
       type: String,
