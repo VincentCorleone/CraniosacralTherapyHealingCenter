@@ -3,4 +3,4 @@
 <text>
 123123123</text>
 </scroll-view>
-<button></button>
+<button size="default" type="primary">信任并接受TA的服务</button>
