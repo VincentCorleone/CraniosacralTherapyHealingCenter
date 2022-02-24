@@ -1,13 +1,85 @@
 <!--pages/healerDetail/healerDetail.wxml-->
 <view>
   <view>
-    <text>执行师简单介绍与形象展示</text>
+    <view style="display:flex; flex-direction:row;">
+      <view style="display:flex; flex-direction:column;">
+        <text>名字</text>
+        <text>擅长</text>
+      </view>
+      <view>
+        <text>头像</text>
+      </view>
+    </view>
+    <view style="display:flex; flex-direction:row;">
+      <text>等级</text>
+      <text>执行个案数</text>
+    </view>
   </view>
   <view>
-    <text>执行师可约时间展示</text>
+    <text>2022年2月</text>
+    <view style="display:flex; flex-direction:row;">
+      <view style="display:flex; flex-direction:column;">
+        <text>今天</text>
+        <text>周五</text>
+        <text>14:00</text>
+        <text>15:00</text>
+        <text>16:00</text>
+        <text>17:00</text>
+      </view>
+      <view style="display:flex; flex-direction:column;">
+        <text>26日</text>
+        <text>周六</text>
+        <text>14:00</text>
+        <text>15:00</text>
+        <text>16:00</text>
+        <text>17:00</text>
+      </view>
+      <view style="display:flex; flex-direction:column;">
+        <text>27日</text>
+        <text>周日</text>
+        <text>14:00</text>
+        <text>15:00</text>
+        <text>16:00</text>
+        <text>17:00</text>
+      </view>
+      <view style="display:flex; flex-direction:column;">
+        <text>28日</text>
+        <text>周一</text>
+        <text>14:00</text>
+        <text>15:00</text>
+        <text>16:00</text>
+        <text>17:00</text>
+      </view>
+      <view style="display:flex; flex-direction:column;">
+        <text>29日</text>
+        <text>周二</text>
+        <text>14:00</text>
+        <text>15:00</text>
+        <text>16:00</text>
+        <text>17:00</text>
+      </view>
+      <view style="display:flex; flex-direction:column;">
+        <text>30日</text>
+        <text>周三</text>
+        <text>14:00</text>
+        <text>15:00</text>
+        <text>16:00</text>
+        <text>17:00</text>
+      </view>
+      <view style="display:flex; flex-direction:column;">
+        <text>31日</text>
+        <text>周四</text>
+        <text>14:00</text>
+        <text>15:00</text>
+        <text>16:00</text>
+        <text>17:00</text>
+      </view>
+    </view>
   </view>
-  <view>
-    <text>执行师详细介绍</text>
+  <view style="display:flex; flex-direction:column">
+    <text>自我介绍</text>
+    <text>擅长领域</text>
+    <text>学习经历</text>
   </view>
 </view>
 <button style="position:fixed;width:100%;bottom: 0" size="default" type="primary">信任并接受TA的服务</button>
