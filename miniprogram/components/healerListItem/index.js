@@ -18,7 +18,7 @@ Component({
     },
     title: {
       type: String,
-      value: "头荐骨抚触疗愈执行"
+      value: "头荐骨共振抚触疗愈执行"
     },
     titleLevel: {
       type: String,

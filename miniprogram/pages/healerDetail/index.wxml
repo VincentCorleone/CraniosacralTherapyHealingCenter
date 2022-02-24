@@ -1,6 +1,13 @@
 <!--pages/healerDetail/healerDetail.wxml-->
-<scroll-view>
-<text>
-123123123</text>
-</scroll-view>
-<button size="default" type="primary">信任并接受TA的服务</button>
+<view>
+  <view>
+    <text>执行师简单介绍与形象展示</text>
+  </view>
+  <view>
+    <text>执行师可约时间展示</text>
+  </view>
+  <view>
+    <text>执行师详细介绍</text>
+  </view>
+</view>
+<button style="position:fixed;width:100%;bottom: 0" size="default" type="primary">信任并接受TA的服务</button>
