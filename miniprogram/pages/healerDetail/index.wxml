@@ -15,71 +15,50 @@
       <text>执行个案数</text>
     </view>
   </view>
-  <view>
-    <text>2022年2月</text>
-    <view style="display:flex; flex-direction:row;">
-      <view style="display:flex; flex-direction:column;">
-        <text>今天</text>
-        <text>周五</text>
-        <text>14:00</text>
-        <text>15:00</text>
-        <text>16:00</text>
-        <text>17:00</text>
-      </view>
-      <view style="display:flex; flex-direction:column;">
-        <text>26日</text>
-        <text>周六</text>
-        <text>14:00</text>
-        <text>15:00</text>
-        <text>16:00</text>
-        <text>17:00</text>
-      </view>
-      <view style="display:flex; flex-direction:column;">
-        <text>27日</text>
-        <text>周日</text>
-        <text>14:00</text>
-        <text>15:00</text>
-        <text>16:00</text>
-        <text>17:00</text>
-      </view>
-      <view style="display:flex; flex-direction:column;">
-        <text>28日</text>
-        <text>周一</text>
-        <text>14:00</text>
-        <text>15:00</text>
-        <text>16:00</text>
-        <text>17:00</text>
-      </view>
-      <view style="display:flex; flex-direction:column;">
-        <text>29日</text>
-        <text>周二</text>
-        <text>14:00</text>
-        <text>15:00</text>
-        <text>16:00</text>
-        <text>17:00</text>
-      </view>
-      <view style="display:flex; flex-direction:column;">
-        <text>30日</text>
-        <text>周三</text>
-        <text>14:00</text>
-        <text>15:00</text>
-        <text>16:00</text>
-        <text>17:00</text>
-      </view>
-      <view style="display:flex; flex-direction:column;">
-        <text>31日</text>
-        <text>周四</text>
-        <text>14:00</text>
-        <text>15:00</text>
-        <text>16:00</text>
-        <text>17:00</text>
-      </view>
-    </view>
+  <view style="display:flex; flex-direction:column">
+    <text>自我介绍</text>
+    <text>擅长领域</text>
+    <text>学习经历</text>
   </view>
   <view style="display:flex; flex-direction:column">
     <text>自我介绍</text>
     <text>擅长领域</text>
     <text>学习经历</text>
   </view>
+
+
+  <view style="display:flex; flex-direction: column;">
+    <h1>选择时间</h1>
+
+    <view class="section">
+      <view class="section__title">选择时间</view>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+          当前选择：{{timeObject[multiIndex[0]].dayValue}}，{{timeObject[multiIndex[0]].timeSpans[multiIndex[1]]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+
+  <view style="display:flex; flex-direction: column;">
+    <view>选择地点</view>
+    <view style="display:flex; flex-direction:row;">
+      <h1>中心</h1>
+      <text>港铁天颂 - 有朋天下头荐骨疗愈中心</text>
+      <text>京基御领公馆 - 宥梵全球头荐骨疗愈中心</text>
+    </view>
+  </view>
+
+  <view style="display:flex; flex-direction:row;">
+    <h1>床位</h1>
+
+    <text>身临其境</text>
+    <text>日式和风</text>
+    <text>樱花满天</text>
+      
+  </view>
 </view>
+
+
 <button style="position:fixed;width:100%;bottom: 0" size="default" type="primary">M信任并接受TA的服务Y</button>
