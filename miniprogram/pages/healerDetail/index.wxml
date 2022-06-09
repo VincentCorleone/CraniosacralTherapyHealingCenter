@@ -34,7 +34,7 @@
       <view class="section__title">选择时间</view>
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
         <view class="picker">
-          当前选择：{{timeObject[multiIndex[0]].dayValue}}，{{timeObject[multiIndex[0]].timeSpans[multiIndex[1]]}}
+          当前选择：{{multiArray[0][multiIndex[0]]}},{{multiArray[1][multiIndex[1]]}}
         </view>
       </picker>
     </view>
@@ -45,7 +45,7 @@
     <view>选择地点</view>
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChangeLocation" value="{{multiIndexLocation}}" range="{{multiArrayLocation}}">
         <view class="picker">
-          当前选择：{{locationObject[multiIndexLocation[0]].locationValue}}，{{locationObject[multiIndexLocation[0]].bedsLocationNo[multiIndexLocation[1]]}}
+          当前选择：{{multiArrayLocation[0][multiIndexLocation[0]]}}，{{multiArrayLocation[1][multiIndexLocation[1]]}}
         </view>
       </picker>
   </view>

@@ -71,6 +71,25 @@ Page({
 
   // 地点选择器 - 函数 <<
 
+   // 时间选择器 - 函数 >>
+   bindMultiPickerColumnChange: function(e) {
+    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    switch (e.detail.column) {
+      case 0:
+        this.data.multiArray[1] = this.data.timeObject[e.detail.value].timeSpans;
+        this.data.multiIndex[0] = e.detail.value;
+        this.data.multiIndex[1] = 0;
+        break;
+      case 1:
+        this.data.multiIndex[1] = e.detail.value;
+        break;
+    }
+
+    this.setData(this.data);
+  },
+
+  // 时间选择器 - 函数 <<
+
   /**
    * 生命周期函数--监听页面加载
    */
