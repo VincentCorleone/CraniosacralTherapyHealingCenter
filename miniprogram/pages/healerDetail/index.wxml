@@ -11,8 +11,8 @@
       </view>
     </view>
     <view style="display:flex; flex-direction:row;">
-      <text>等级</text>
-      <text>执行个案数</text>
+      <text>等级: 头荐骨疗愈匠</text>
+      <text>执行个案数： 2</text>
     </view>
   </view>
   <view style="display:flex; flex-direction:column">
@@ -20,16 +20,10 @@
     <text>擅长领域</text>
     <text>学习经历</text>
   </view>
-  <view style="display:flex; flex-direction:column">
-    <text>自我介绍</text>
-    <text>擅长领域</text>
-    <text>学习经历</text>
-  </view>
+
 
 
   <view style="display:flex; flex-direction: column;">
-    <h1>选择时间</h1>
-
     <view class="section">
       <view class="section__title">选择时间</view>
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
