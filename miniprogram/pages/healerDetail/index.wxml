@@ -51,6 +51,7 @@
   </view>
   <!-- 地点选择器 - 视觉显化 << -->
 </view>
+<text>价格: 600元</text>
 
 
 <button style="position:fixed;width:100%;bottom: 0" size="default" type="primary">M信任并接受TA的服务Y</button>
