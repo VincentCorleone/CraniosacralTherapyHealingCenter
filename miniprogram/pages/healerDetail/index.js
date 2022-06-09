@@ -23,37 +23,75 @@ Page({
           '14:00-14:50']
       },
     ],
-    locationObject: [{}]
+
+    // 地点选择器 - 数据 >>
+    
+    locationObject: [
+      {
+        locationValue: "港铁天颂 - 有朋天下头荐骨疗愈中心",
+        bedsLocationNo:
+          [ 
+            "大厅",
+            "小厅",
+            "日式和风",
+            "身临其境"
+          ]
+      },
+      {
+        locationValue: "星河丹堤 - 宥梵深圳头荐骨疗愈中心",
+        bedsLocationNo:
+        [
+          "大厅",
+          "和风细雨",
+          "一览无余"
+        ]
+      }
+    ],
+    multiIndexLocation: [0, 0],
+    multiArrayLocation: [[], []],
+    // 地点选择器 - 数据 <<
   },
 
-  bindMultiPickerColumnChange: function(e) {
+    // 地点选择器 - 函数 >>
+  bindMultiPickerColumnChangeLocation: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     switch (e.detail.column) {
       case 0:
-        this.data.multiArray[1] = this.data.timeObject[e.detail.value].timeSpans;
-        this.data.multiIndex[0] = e.detail.value;
-        this.data.multiIndex[1] = 0;
+        this.data.multiArrayLocation[1] = this.data.locationObject[e.detail.value].bedsLocationNo;
+        this.data.multiIndexLocation[0] = e.detail.value;
+        this.data.multiIndexLocation[1] = 0;
         break;
       case 1:
-        this.data.multiIndex[1] = e.detail.value;
+        this.data.multiIndexLocation[1] = e.detail.value;
         break;
     }
 
-
-    
     this.setData(this.data);
   },
+
+  // 地点选择器 - 函数 <<
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 时间选择器 - 页面启动加载 >>
     Object.keys(this.data.timeObject).forEach((value, index) => {
       this.data.multiArray[0].push(this.data.timeObject[index].dayValue);
       console.log(this.data.timeObject[index].dayValue);
     });
     console.log(this.data.multiArray[0]);
-    // this.data.multiArray[0] = collection;
     this.data.multiArray[1] = this.data.timeObject[0].timeSpans;
+    // 时间选择器 - 页面启动加载 <<
+
+    // 地点选择器 - 页面启动加载 >>
+    Object.keys(this.data.locationObject).forEach((value, index) => {
+      this.data.multiArrayLocation[0].push(this.data.locationObject[index].locationValue);
+      console.log(this.data.locationObject[index].locationValue);
+    });
+    console.log(this.data.multiArrayLocation[0]);
+    this.data.multiArrayLocation[1] = this.data.locationObject[0].bedsLocationNo;
+    // 地点选择器 - 页面启动加载 <<
 
     this.setData(this.data);
   },

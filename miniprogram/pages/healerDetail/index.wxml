@@ -40,24 +40,16 @@
     </view>
   </view>
 
-
+  <!-- 地点选择器 - 视觉显化 << -->
   <view style="display:flex; flex-direction: column;">
     <view>选择地点</view>
-    <view style="display:flex; flex-direction:row;">
-      <h1>中心</h1>
-      <text>港铁天颂 - 有朋天下头荐骨疗愈中心</text>
-      <text>京基御领公馆 - 宥梵全球头荐骨疗愈中心</text>
-    </view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChangeLocation" value="{{multiIndexLocation}}" range="{{multiArrayLocation}}">
+        <view class="picker">
+          当前选择：{{locationObject[multiIndexLocation[0]].locationValue}}，{{locationObject[multiIndexLocation[0]].bedsLocationNo[multiIndexLocation[1]]}}
+        </view>
+      </picker>
   </view>
-
-  <view style="display:flex; flex-direction:row;">
-    <h1>床位</h1>
-
-    <text>身临其境</text>
-    <text>日式和风</text>
-    <text>樱花满天</text>
-      
-  </view>
+  <!-- 地点选择器 - 视觉显化 << -->
 </view>
 
 
