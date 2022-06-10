@@ -49,4 +49,4 @@
 <text>价格: 600元</text>
 
 
-<button style="position:fixed;width:100%;bottom: 0" size="default" type="primary">M信任并接受TA的服务Y</button>
+<button bindtap="onAcceptButtonTapped" style="position:fixed;width:100%;bottom: 0" size="default" type="primary">M信任并接受TA的服务Y</button>

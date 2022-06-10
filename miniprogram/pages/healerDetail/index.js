@@ -121,6 +121,28 @@ Page({
 
   },
 
+  onAcceptButtonTapped: function () {
+
+    wx.cloud.callFunction({
+      name: 'getUnifiedOrder',
+      data: {
+        // ...
+      },
+      success: res => {
+        const payment = res.result.payment
+        wx.requestPayment({
+          ...payment,
+          success (res) {
+            console.log('pay success', res)
+          },
+          fail (err) {
+            console.error('pay fail', err)
+          }
+        })
+      },
+      fail: console.error,
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
