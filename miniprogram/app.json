@@ -12,8 +12,26 @@
     "pages/updateRecordSuccess/index",
     "pages/sumRecord/index",
     "pages/sumRecordResult/index",
-    "pages/healerDetail/index"
+    "pages/healerDetail/index",
+    "pages/ticket/index"
   ],
+  "tabBar": {
+    "custom": false,
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "疗愈师们",
+        "iconPath": "images/healer.png",
+        "selectedIconPath": "images/healer_tapped.png"
+      },
+      {
+        "pagePath": "pages/ticket/index",
+        "text": "票据",
+        "iconPath": "images/ticket.png",
+        "selectedIconPath": "images/ticket_tapped.png"
+      }
+    ]
+  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
