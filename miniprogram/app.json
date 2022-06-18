@@ -21,14 +21,14 @@
       {
         "pagePath": "pages/index/index",
         "text": "疗愈师们",
-        "iconPath": "images/healer.png",
-        "selectedIconPath": "images/healer_tapped.png"
+        "iconPath": "images/healer_icon.png",
+        "selectedIconPath": "images/healer_icon_tapped.png"
       },
       {
         "pagePath": "pages/ticket/index",
         "text": "票据",
-        "iconPath": "images/ticket.png",
-        "selectedIconPath": "images/ticket_tapped.png"
+        "iconPath": "images/ticket_icon.png",
+        "selectedIconPath": "images/ticket_icon_tapped.png"
       }
     ]
   },
