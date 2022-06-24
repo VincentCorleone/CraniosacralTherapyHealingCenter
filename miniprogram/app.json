@@ -13,7 +13,8 @@
     "pages/sumRecord/index",
     "pages/sumRecordResult/index",
     "pages/healerDetail/index",
-    "pages/ticket/index"
+    "pages/ticket/index",
+    "pages/i/index"
   ],
   "tabBar": {
     "custom": false,
@@ -29,6 +30,12 @@
         "text": "票据",
         "iconPath": "images/ticket_icon.png",
         "selectedIconPath": "images/ticket_icon_tapped.png"
+      },
+      {
+        "pagePath": "pages/i/index",
+        "text": "我",
+        "iconPath": "images/i_icon.png",
+        "selectedIconPath": "images/i_icon_tapped.png"
       }
     ]
   },
