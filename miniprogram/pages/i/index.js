@@ -5,7 +5,6 @@ Page({
    * Page initial data
    */
   data: {
-    isDuringSwitchIdentity: false,
     show: false,
   },
 
