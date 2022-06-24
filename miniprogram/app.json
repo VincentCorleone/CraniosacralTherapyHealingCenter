@@ -1,4 +1,8 @@
 {
+  "usingComponents": {
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell",
+    "van-popup": "/miniprogram_npm/@vant/weapp/popup"
+  },
   "pages": [
     "pages/index/index",
     "pages/getOpenId/index",

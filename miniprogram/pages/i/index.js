@@ -5,7 +5,21 @@ Page({
    * Page initial data
    */
   data: {
+    isDuringSwitchIdentity: false,
+    show: false,
+  },
 
+  selectIdentity(event) {
+    console.log(event.target.dataset.id)
+    this.setData({show: false})
+  },
+
+  showPopup() {
+    this.setData({ show: true });
+  },
+
+  onClose() {
+    this.setData({ show: false });
   },
 
   /**
