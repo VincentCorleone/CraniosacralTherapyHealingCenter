@@ -10,6 +10,17 @@ Page({
 
   selectIdentity(event) {
     console.log(event.target.dataset.id)
+    wx.navigateToMiniProgram({
+      appId: '',
+      path: 'page/index/index?id=123',
+      extraData: {
+        foo: 'bar'
+      },
+      envVersion: 'develop',
+      success(res) {
+        // 打开成功
+      }
+    })
     this.setData({show: false})
   },
 
