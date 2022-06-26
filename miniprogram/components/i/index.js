@@ -8,25 +8,30 @@ Component({
     show: false,
   },
 
-  selectIdentity(event) {
-    console.log(event.target.dataset.id)
-    wx.navigateToMiniProgram({
-      appId: '',
-      path: 'page/index/index?id=123',
-      extraData: {
-        foo: 'bar'
-      },
-      envVersion: 'develop',
-      success(res) {
-        // 打开成功
+
+  methods: {
+    showPopup() {
+      this.setData({ show: true });
+    },
+
+    selectIdentity(event) {
+      const identity = event.target.dataset.id;
+      const currentUrl = `/${getCurrentPages()[0].route}`
+      const urlTo = `/pages/${identity}Home/${identity}Home`
+      
+      console.log(currentUrl)
+      console.log(urlTo)
+
+      if (currentUrl!=urlTo){
+        wx.navigateTo({
+          url: urlTo,
+        })
       }
-    })
-    this.setData({show: false})
+
+      this.setData({show: false})
+    },
   },
 
-  showPopup() {
-    this.setData({ show: true });
-  },
 
   onClose() {
     this.setData({ show: false });

@@ -5,7 +5,11 @@ Page({
    * Page initial data
    */
   data: {
-
+    active: 'healers',
+  },
+  
+  onChange(event) {
+    this.setData({ active: event.detail });
   },
 
   /**
