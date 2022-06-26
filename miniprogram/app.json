@@ -1,10 +1,15 @@
 {
   "usingComponents": {
+    "healers": "/components/healers/index",
+    "ticket": "/components/ticket/index",
+    "abouti": "/components/i/index",
     "van-cell": "/miniprogram_npm/@vant/weapp/cell",
-    "van-popup": "/miniprogram_npm/@vant/weapp/popup"
+    "van-popup": "/miniprogram_npm/@vant/weapp/popup",
+    "van-tabbar": "/miniprogram_npm/@vant/weapp/tabbar",
+    "van-tabbar-item": "/miniprogram_npm/@vant/weapp/tabbar-item"
   },
   "pages": [
-    "pages/index/index",
+    "pages/clientHome/clientHome",
     "pages/getOpenId/index",
     "pages/getMiniProgramCode/index",
     "pages/deployService/index",
@@ -17,32 +22,9 @@
     "pages/sumRecord/index",
     "pages/sumRecordResult/index",
     "pages/healerDetail/index",
-    "pages/ticket/index",
-    "pages/i/index"
+    "pages/healerHome/healerHome",
+    "pages/placeHolderHome/placeHolderHome"
   ],
-  "tabBar": {
-    "custom": false,
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "疗愈师们",
-        "iconPath": "images/healer_icon.png",
-        "selectedIconPath": "images/healer_icon_tapped.png"
-      },
-      {
-        "pagePath": "pages/ticket/index",
-        "text": "票据",
-        "iconPath": "images/ticket_icon.png",
-        "selectedIconPath": "images/ticket_icon_tapped.png"
-      },
-      {
-        "pagePath": "pages/i/index",
-        "text": "我",
-        "iconPath": "images/i_icon.png",
-        "selectedIconPath": "images/i_icon_tapped.png"
-      }
-    ]
-  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
