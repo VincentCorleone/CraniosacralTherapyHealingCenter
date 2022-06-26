@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "healer-list-item": "/components/healerListItem/index"
+  }
+}
