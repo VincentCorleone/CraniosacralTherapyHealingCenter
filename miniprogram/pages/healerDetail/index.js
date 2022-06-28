@@ -124,7 +124,7 @@ Page({
   onAcceptButtonTapped: function () {
 
     wx.cloud.callFunction({
-      name: 'getUnifiedOrder',
+      name: 'createOrder',
       data: {
         // ...
       },

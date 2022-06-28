@@ -1,35 +1,15 @@
-// pages/i/index.js
+// pages/healerHome/healerHome.js
 Page({
 
   /**
    * Page initial data
    */
   data: {
-    show: false,
+    active: 'healers',
   },
-
-  selectIdentity(event) {
-    console.log(event.target.dataset.id)
-    wx.navigateToMiniProgram({
-      appId: '',
-      path: 'page/index/index?id=123',
-      extraData: {
-        foo: 'bar'
-      },
-      envVersion: 'develop',
-      success(res) {
-        // 打开成功
-      }
-    })
-    this.setData({show: false})
-  },
-
-  showPopup() {
-    this.setData({ show: true });
-  },
-
-  onClose() {
-    this.setData({ show: false });
+  
+  onChange(event) {
+    this.setData({ active: event.detail });
   },
 
   /**
