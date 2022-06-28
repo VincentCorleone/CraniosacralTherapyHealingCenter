@@ -1,7 +1,8 @@
 <!--pages/placeHolderHome/placeHolderHome.wxml-->
 
 <view>
-  <healers wx:if="{{ active=='healers' }}"></healers>
+  <init-place-holder wx:if="{{ active=='healers' }}"></init-place-holder>
+  <!-- <healers wx:if="{{ active=='healers' }}"></healers> -->
   <ticket wx:if="{{ active=='ticket' }}"></ticket>
   <abouti wx:if="{{ active=='i' }}"></abouti>
 </view>

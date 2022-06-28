@@ -1,0 +1,26 @@
+<!--components/initPlaceHolder/initPlaceHolder.wxml-->
+<van-cell-group>
+  <van-field
+    value="{{ value }}"
+    label="场所名称"
+    placeholder="请输入场所名称"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+  <van-field
+    value="{{ value }}"
+    label="场所详细地址"
+    placeholder="请输入场所详细地址"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+  <van-field
+    value="{{ value }}"
+    label="定位"
+    placeholder="请点击我后在地图中选择位置"
+    border="{{ false }}"
+    readonly
+    bindtap="chooseLocation"
+    bind:change="onChange"
+  />
+</van-cell-group>

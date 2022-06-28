@@ -25,3 +25,60 @@ page {
   flex-direction: column;
   justify-content: flex-start;
 }
+
+
+/* for TencentMap start: */
+.feature-content {
+	padding-right: 20px;
+  height: 56px;
+  display: flex;
+	justify-content: space-between;
+  line-height: 56px;
+  border-bottom: 0.5px solid rgba(0,0,0,0.1);
+}
+
+.feature-label {
+	padding-right: 10px;
+  font-size: 14px;
+	color: #222;
+	white-space: nowrap;
+}
+.feature-txt {
+	display:flex;
+	flex: 1;
+	justify-content: flex-end;
+	align-items: center;
+	line-height: 20px;
+  font-size: 14px;
+	color:rgba(34,34,34,0.5);
+	word-break: break-all;
+}
+.introduce {
+  font-size: 14px;
+  color: #222;
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+
+.introduce-regular {
+	font-family: PingFangSC-Regular;
+}
+.introduce-medium {
+	font-family: PingFangSC-Medium;
+	font-weight: 500;
+}
+
+.pl20 {
+	padding-left: 20px !important;
+}
+.pr20 {
+	padding-right: 20px !important;
+}
+.plr20 {
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+}
+
+
+
+/* for TencentMap end */
