@@ -93,11 +93,11 @@ Page({
     this.eventChannel = this.getOpenerEventChannel()
   },
 
-  confirm: async function(){
+  confirm: function(){
     var txt = '';
     var that = this;
     const markers = this.data.markers;
-    await qqmapsdk.reverseGeocoder({ // 调用逆地址解析
+    qqmapsdk.reverseGeocoder({ // 调用逆地址解析
       location: {
         latitude: markers[0].latitude,
         longitude: markers[0].longitude
@@ -112,13 +112,15 @@ Page({
         const location = {
           latitude: markers[0].latitude,
           longitude: markers[0].longitude,
-          locationTxt: txt
+          txtForHuman: txt
         };
         console.log(that.eventChannel)
-        that.eventChannel.emit('getLocationFromOpeningPage',{data: location})
+        that.eventChannel.emit('getLocationFromOpeningPage',location)
       }
     });
-   
+    wx.navigateBack({
+      delta: 1,
+    })
   },
 	// 监听视野变化
 	onChangeRegion (event) {

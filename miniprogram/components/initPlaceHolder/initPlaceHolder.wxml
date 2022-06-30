@@ -1,21 +1,21 @@
 <!--components/initPlaceHolder/initPlaceHolder.wxml-->
 <van-cell-group>
   <van-field
-    value="{{ value }}"
+    model:value="{{ name }}"
     label="场所名称"
     placeholder="请输入场所名称"
     border="{{ false }}"
     bind:change="onChange"
   />
   <van-field
-    value="{{ value }}"
+    model:value="{{ address }}"
     label="场所详细地址"
     placeholder="请输入场所详细地址"
     border="{{ false }}"
     bind:change="onChange"
   />
   <van-field
-    value="{{ value }}"
+    value="{{ location.txtForHuman }}"
     label="定位"
     placeholder="请点击我后在地图中选择位置"
     border="{{ false }}"
@@ -23,4 +23,20 @@
     bindtap="chooseLocation"
     bind:change="onChange"
   />
+  <van-field model:value="{{ newRoom }}" label="房间" placeholder="请输入房间名字后点击左下+号">
+  </van-field>
+  <van-icon name="add" bindtap="addRoom"></van-icon>
+  <view wx:for="{{ rooms }}">
+    <van-tag wx:if="{{ index==selectedRoomIndex }}" type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
+    <van-tag wx:else plain type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
+  </view>
+  <view wx:if="{{ selectedRoomIndex > -1}}">
+    <van-field model:value="{{ newBed }}" label="床位" placeholder="请输入床位名字后点击左下+号">
+    </van-field>
+    <van-icon name="add" bindtap="addBed"></van-icon>
+    <view wx:for="{{ rooms[selectedRoomIndex].beds }}">
+      <van-tag plain type="primary">{{ item }}</van-tag>
+    </view>
+  </view>
+  <van-button type="primary" bindtap="apply">申请</van-button>
 </van-cell-group>
