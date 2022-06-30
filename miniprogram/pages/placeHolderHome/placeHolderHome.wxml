@@ -4,7 +4,7 @@
   <init-place-holder wx:if="{{ active=='healers' }}"></init-place-holder>
   <!-- <healers wx:if="{{ active=='healers' }}"></healers> -->
   <ticket wx:if="{{ active=='ticket' }}"></ticket>
-  <abouti wx:if="{{ active=='i' }}"></abouti>
+  <to-develop wx:if="{{ active=='i' }}"></to-develop>
 </view>
 
 
