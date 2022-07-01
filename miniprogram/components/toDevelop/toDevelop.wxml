@@ -1,3 +1,5 @@
 <!--components/toDevelop/toDevelop.wxml-->
-<image src="https://www.uaa.com/static/media/worker.2eb13030.gif"></image>
-<text>程序员正在开发此页面...</text>
+<div style="position: absolute; top: 10%; left: 5%; width: 90%;">
+  <image mode="aspectFit" style="width: 100%;"  src="https://www.uaa.com/static/media/worker.2eb13030.gif" />
+  <text>程序员正在开发此页面...</text>
+</div>
