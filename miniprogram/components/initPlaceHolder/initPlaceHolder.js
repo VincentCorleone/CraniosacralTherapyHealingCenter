@@ -19,16 +19,6 @@ Component({
     selectedRoomIndex: -1,
   },
 
-  lifetimes: {
-    attached: function(){
-      wx.cloud.callFunction({
-        name: 'getPlaceAsPlaceHolder',
-      }).then(res => {
-        console.log(res.result) // 3
-      })
-    }
-  },
-
   /**
    * Component methods
    */

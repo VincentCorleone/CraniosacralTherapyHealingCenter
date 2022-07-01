@@ -6,6 +6,7 @@ Page({
    */
   data: {
     active: 'healers',
+    originPlace: {}
   },
   
   onChange(event) {
@@ -15,8 +16,12 @@ Page({
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad(options) {
+  async onLoad(options) {
 
+    const res = await wx.cloud.callFunction({
+      name: 'getPlaceAsPlaceHolder',
+    })
+    this.data.originPlace = res.result;
   },
 
   /**

@@ -1,10 +1,14 @@
 <!--pages/placeHolderHome/placeHolderHome.wxml-->
 
 <view>
-  <init-place-holder wx:if="{{ active=='healers' }}"></init-place-holder>
+  <view wx:if="{{ active=='healers' }}">
+    <init-place-holder wx:if="{{ originPlace.holderOpenId!=undefined }}"></init-place-holder>
+    <text wx:else>已提交申请，请等待审核</text>
+  </view>
+  
   <!-- <healers wx:if="{{ active=='healers' }}"></healers> -->
-  <ticket wx:if="{{ active=='ticket' }}"></ticket>
-  <to-develop wx:if="{{ active=='i' }}"></to-develop>
+  <ticket wx:elif="{{ active=='ticket' }}"></ticket>
+  <to-develop wx:else="{{ active=='i' }}"></to-develop>
 </view>
 
 

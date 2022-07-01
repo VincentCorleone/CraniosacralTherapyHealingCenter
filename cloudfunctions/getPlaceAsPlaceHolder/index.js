@@ -8,10 +8,9 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   const db = cloud.database()
-  var place = {}
   const promise = db.collection('places').where({
     holderOpenId: wxContext.OPENID
   }).get()
-  console.log(place)
-  return (await promise).then(res => {return res})
+  const place = (await promise).data[0]
+  return place;
 }
