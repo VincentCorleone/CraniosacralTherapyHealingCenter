@@ -6,7 +6,7 @@ Page({
    */
   data: {
     active: 'healers',
-    originPlace: {}
+    originPlace: {},
   },
   
   onChange(event) {

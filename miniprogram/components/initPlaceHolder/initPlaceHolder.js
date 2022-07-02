@@ -17,6 +17,8 @@ Component({
     newRoom: '',
     rooms:[],
     selectedRoomIndex: -1,
+    step: 1,
+    currentDate: '12:00',
   },
 
   /**
@@ -62,6 +64,16 @@ Component({
         name: 'applyAsPlaceHolder',
         data: toSubmit,
       })
-    }
-  }
+    },
+    next: function(){
+      this.setData({step: 2})
+      console.log(this.data)
+    },
+    setUpOpeningPeriods: function(){
+      this.setData({isSettingUpPeriods: true})
+    },
+    onSettingUpPeriodsClose: function(){
+      this.setData({isSettingUpPeriods: false})
+    },
+  },
 })

@@ -1,9 +1,8 @@
 <!--pages/placeHolderHome/placeHolderHome.wxml-->
 
-<view>
-  <view wx:if="{{ active=='healers' }}">
-    <init-place-holder wx:if="{{ originPlace.holderOpenId!=undefined }}"></init-place-holder>
-    <text wx:else>已提交申请，请等待审核</text>
+<view style="height: 100%;">
+  <view style="height: 100%;" wx:if="{{ active=='healers' }}">
+    <init-place-holder></init-place-holder>
   </view>
   
   <!-- <healers wx:if="{{ active=='healers' }}"></healers> -->
