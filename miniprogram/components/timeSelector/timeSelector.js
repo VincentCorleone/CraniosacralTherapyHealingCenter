@@ -13,13 +13,6 @@ Component({
    * Component initial data
    */
   data: {
-
-  },
-
-  /**
-   * Component methods
-   */
-  methods: {
     filter(type, options) {
       if (type === 'minute') {
         return options.filter((option) => option % 30 === 0);
@@ -27,6 +20,12 @@ Component({
 
       return options;
     },
+  },
+
+  /**
+   * Component methods
+   */
+  methods: {
     onClose: function() {
       this.triggerEvent('close',{},{})
     }
