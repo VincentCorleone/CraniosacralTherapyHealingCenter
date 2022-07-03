@@ -1,8 +1,7 @@
 <!--components/timeSelector/timeSelector.wxml-->
-<van-popup show="{{ show }}" position="bottom" bind:close="onClose" filter="{{ filter }}">
-  <van-datetime-picker
+<van-popup show="{{ show }}" position="bottom" bind:close="onCancel" filter="{{ filter }}">
+  <van-datetime-picker value="{{ currentTime }}"
   type="time"
-  value="{{ currentDate }}"
-  filter="{{ filter }}"
+  filter="{{ filter }}" bind:confirm="onConfirm" bind:input="onInput"
   />
 </van-popup>

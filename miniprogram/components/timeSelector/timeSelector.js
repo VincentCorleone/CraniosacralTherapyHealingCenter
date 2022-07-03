@@ -20,6 +20,7 @@ Component({
 
       return options;
     },
+    currentTime: '12:00',
   },
 
   /**
@@ -28,6 +29,12 @@ Component({
   methods: {
     onClose: function() {
       this.triggerEvent('close',{},{})
+    },
+    onConfirm: function() {
+      this.triggerEvent('confirm',this.data.currentTime,{})
+    },
+    onInput: function(e) {
+      this.setData({currentTime: e.detail})
     }
   }
 })

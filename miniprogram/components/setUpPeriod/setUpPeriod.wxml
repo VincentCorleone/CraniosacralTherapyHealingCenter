@@ -7,6 +7,7 @@
   <van-field label="结束时间" value="{{ endTime }}" placeholder="点击以设置" readonly bindtap="setUpEndTime"></van-field>
 </van-popup>
 
-<time-selector show="{{ isSettingUpTime }}" bind:close="finishSettingUpStartTime">
+<time-selector show="{{ isSettingUpTime }}" bind:cancel="cancelSettingUpStartTime" bind:confirm="confirmSettingUpStartTime"
+>
   
 </time-selector>

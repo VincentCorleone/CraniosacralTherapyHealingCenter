@@ -36,7 +36,12 @@ Component({
       this.setData({isSettingUpTime: true})
     },
 
-    finishSettingUpStartTime: function(e){
+    cancelSettingUpStartTime: function(e){
+      this.setData({isSettingUpTime: false})
+    },
+
+    confirmSettingUpStartTime: function(e){
+      console.log(e.detail)
       this.setData({isSettingUpTime: false})
     }
 
