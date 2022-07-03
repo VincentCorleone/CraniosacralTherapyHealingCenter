@@ -5,14 +5,15 @@ Component({
    */
   properties: {
     minHour: 9,
-    maxHour: 21
+    maxHour: 21,
+    show: false,
   },
 
   /**
    * Component initial data
    */
   data: {
-    show: false
+
   },
 
   /**
@@ -26,9 +27,8 @@ Component({
 
       return options;
     },
-
     onClose: function() {
-
+      this.triggerEvent('close',{},{})
     }
   }
 })

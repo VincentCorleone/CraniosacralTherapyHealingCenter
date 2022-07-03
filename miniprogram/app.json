@@ -14,7 +14,8 @@
     "van-tabbar-item": "/miniprogram_npm/@vant/weapp/tabbar-item",
     "van-field": "/miniprogram_npm/@vant/weapp/field",
     "init-place-holder": "/components/initPlaceHolder/initPlaceHolder",
-    "set-up-period": "/components/setUpPeriod/setUpPeriod"
+    "set-up-period": "/components/setUpPeriod/setUpPeriod",
+    "time-selector": "/components/timeSelector/timeSelector"
   },
   "pages": [
     "pages/placeHolderHome/placeHolderHome",

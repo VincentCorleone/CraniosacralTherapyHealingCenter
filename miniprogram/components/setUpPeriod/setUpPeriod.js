@@ -14,7 +14,7 @@ Component({
    * Component initial data
    */
   data: {
-
+    isSettingUpTime: false,
   },
 
   /**
@@ -31,6 +31,14 @@ Component({
       var myEventOption = {}
       this.triggerEvent('close', myEventDetail, myEventOption)
     },
+
+    setUpStartTime: function(){
+      this.setData({isSettingUpTime: true})
+    },
+
+    finishSettingUpStartTime: function(e){
+      this.setData({isSettingUpTime: false})
+    }
 
   }
 })

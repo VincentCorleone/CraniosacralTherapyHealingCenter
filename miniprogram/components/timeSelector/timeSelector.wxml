@@ -1,5 +1,5 @@
 <!--components/timeSelector/timeSelector.wxml-->
-<van-popup show="{{ isSettingTime }}">
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
   <van-datetime-picker
   type="time"
   value="{{ currentDate }}"
