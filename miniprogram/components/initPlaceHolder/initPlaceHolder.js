@@ -19,12 +19,16 @@ Component({
     selectedRoomIndex: -1,
     step: 1,
     currentDate: '12:00',
+    isSettingUpPeriod: false,
   },
 
   /**
    * Component methods
    */
   methods: {
+    attached: function(){
+      console.log(this.data)
+    },
     chooseLocation: function(){
       const that = this;
       wx.navigateTo({
@@ -70,10 +74,12 @@ Component({
       console.log(this.data)
     },
     setUpOpeningPeriods: function(){
-      this.setData({isSettingUpPeriods: true})
+      console.log(this.data)
+      this.setData({isSettingUpPeriod: true})
+      console.log(this.data)
     },
-    onSettingUpPeriodsClose: function(){
-      this.setData({isSettingUpPeriods: false})
-    },
+    onReceivePeriod: function(e){
+      this.setData({isSettingUpPeriod: false})
+    }
   },
 })

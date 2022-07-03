@@ -48,12 +48,9 @@
     <text style="writing-mode: vertical-lr;">周{{ item }}</text>
     <view style="width: 100%; text-align: center;" bindtap="setUpOpeningPeriods">请点击此处以设置开放时间段</view>
   </view>
+  <set-up-period show="{{ isSettingUpPeriod }}" bind:close="onReceivePeriod">
+  </set-up-period>
 </view>
 
-<van-popup show="{{ isSettingUpPeriods }}" bind:close="onSettingUpPeriodsClose">
-  <h1>添加一个开放时间段</h1>
-  <van-field label="起始时间" value="{{ startTime }}" placeholder="点击以设置" readonly bindtap="setUpStartTime"></van-field>
-  <van-field label="结束时间" value="{{ endTime }}" placeholder="点击以设置" readonly bindtap="setUpEndTime"></van-field>
-</van-popup>
 
 

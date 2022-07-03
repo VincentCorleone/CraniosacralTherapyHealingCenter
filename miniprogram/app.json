@@ -13,9 +13,11 @@
     "van-tabbar": "/miniprogram_npm/@vant/weapp/tabbar",
     "van-tabbar-item": "/miniprogram_npm/@vant/weapp/tabbar-item",
     "van-field": "/miniprogram_npm/@vant/weapp/field",
-    "init-place-holder": "/components/initPlaceHolder/initPlaceHolder"
+    "init-place-holder": "/components/initPlaceHolder/initPlaceHolder",
+    "set-up-period": "/components/setUpPeriod/setUpPeriod"
   },
   "pages": [
+    "pages/placeHolderHome/placeHolderHome",
     "pages/clientHome/clientHome",
     "pages/getOpenId/index",
     "pages/getMiniProgramCode/index",
@@ -30,7 +32,6 @@
     "pages/sumRecordResult/index",
     "pages/healerDetail/index",
     "pages/healerHome/healerHome",
-    "pages/placeHolderHome/placeHolderHome",
     "pages/map/map"
   ],
   "plugins": {

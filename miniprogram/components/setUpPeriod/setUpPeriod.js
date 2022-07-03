@@ -4,7 +4,10 @@ Component({
    * Component properties
    */
   properties: {
-
+    show: {
+      type: Boolean,
+      value: false,
+    }
   },
 
   /**
@@ -18,6 +21,16 @@ Component({
    * Component methods
    */
   methods: {
+    attached: function(){
+      console.log(this.properties.show)
+      console.log("attached")
+    },
+    
+    onClose: function(){
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {}
+      this.triggerEvent('close', myEventDetail, myEventOption)
+    },
 
   }
 })
