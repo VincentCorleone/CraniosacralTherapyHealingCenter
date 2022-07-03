@@ -27,7 +27,7 @@ Component({
    * Component methods
    */
   methods: {
-    onClose: function() {
+    onCancel: function() {
       this.triggerEvent('close',{},{})
     },
     onConfirm: function() {

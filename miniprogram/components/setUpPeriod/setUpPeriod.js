@@ -15,6 +15,8 @@ Component({
    */
   data: {
     isSettingUpTime: false,
+    isSettingIndex: -1,
+    period: ['','']
   },
 
   /**
@@ -33,16 +35,29 @@ Component({
     },
 
     setUpStartTime: function(){
+      
+      this.data.isSettingIndex = 0
+      this.setUpTime()
+    },
+
+    setUpEndTime: function(){
+      this.data.isSettingIndex = 1
+      this.setUpTime()
+    },
+
+    setUpTime: function(){
       this.setData({isSettingUpTime: true})
     },
 
-    cancelSettingUpStartTime: function(e){
+    cancelSettingUpTime: function(e){
       this.setData({isSettingUpTime: false})
     },
 
-    confirmSettingUpStartTime: function(e){
-      console.log(e.detail)
-      this.setData({isSettingUpTime: false})
+    confirmSettingUpTime: function(e){
+      var tmpPeriod = this.data.period
+      tmpPeriod[this.data.isSettingIndex] = e.detail
+      console.log(tmpPeriod)
+      this.setData({isSettingUpTime: false, period: tmpPeriod})
     }
 
   }
