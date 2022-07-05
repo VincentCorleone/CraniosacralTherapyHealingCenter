@@ -1,8 +1,11 @@
 // components/setUpPeriod/setUpPeriod.js
+const computedBehavior = require('miniprogram-computed').behavior
+
 Component({
   /**
    * Component properties
    */
+  behaviors: [computedBehavior],
   properties: {
     show: {
       type: Boolean,
@@ -17,6 +20,18 @@ Component({
     isSettingUpTime: false,
     isSettingIndex: -1,
     period: [undefined,undefined]
+  },
+  computed: {
+    startTime(data) {
+      if( data.period[0]!=undefined){
+        return data.period[0].toString()
+      }
+    },
+    endTime(data) {
+      if( data.period[1]!=undefined){
+        return data.period[1].toString()
+      }
+    }
   },
 
   /**
@@ -53,22 +68,13 @@ Component({
     confirmSettingUpTime: function(e){
       var tmpPeriod = this.data.period
       tmpPeriod[this.data.isSettingIndex] = e.detail
+      console.log(tmpPeriod[0].toString())
       this.setData({isSettingUpTime: false, period: tmpPeriod})
     },
 
     confirmPeriod: function(){
       var isValid = function(startTime, endTime){
-        var startH,startM
-        [ startH,startM ] = startTime.split(":")
-        var endH,endM
-        [ endH,endM] = endTime.split(":")
-        if(parseInt(startH) < parseInt(endH)){
-          return true;
-        }else if (parseInt(startH)==parseInt(endH) && parseInt(startM) < parseInt(endM)){
-          return true;
-        }else{
-          return false;
-        }
+        return startTime < endTime
       }
       if (this.data.period[0]!=undefined && this.data.period[1]!=undefined && isValid(this.data.period[0],this.data.period[1])){
         this.triggerEvent("confirm", this.data.period,{})

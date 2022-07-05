@@ -3,8 +3,8 @@
 
 <van-popup show="{{ show }}" bind:close="onClose">
   <h1>添加一个开放时间段</h1>
-  <van-field label="起始时间" value="{{ period[0] }}" placeholder="点击以设置" readonly bindtap="setUpStartTime"></van-field>
-  <van-field label="结束时间" value="{{ period[1] }}" placeholder="点击以设置" readonly bindtap="setUpEndTime"></van-field>
+  <van-field label="起始时间" value="{{ startTime }}" placeholder="点击以设置" readonly bindtap="setUpStartTime"></van-field>
+  <van-field label="结束时间" value="{{ endTime }}" placeholder="点击以设置" readonly bindtap="setUpEndTime"></van-field>
   <van-button type="primary" bindtap="confirmPeriod">确认</van-button>
 </van-popup>
 
