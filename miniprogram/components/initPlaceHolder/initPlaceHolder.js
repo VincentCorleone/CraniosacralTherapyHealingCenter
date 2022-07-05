@@ -1,7 +1,10 @@
 // components/initPlaceHolder/initPlaceHolder.js
 const TimeInADay = require('../../utils/time.js')
+const computedBehavior = require('miniprogram-computed').behavior
+
 
 Component({
+  behaviors: [computedBehavior],
   /**
    * Component properties
    */
@@ -23,7 +26,7 @@ Component({
     currentDate: '12:00',
     isSettingUpPeriod: false,
     earliestTime: undefined,
-    latestTIme: undefined,
+    latestTime: undefined,
     timeTable: [
       [],
       [],
@@ -38,12 +41,80 @@ Component({
     earliestTime: undefined
   },
 
+  computed: {
+    ratiosTable(data){
+      var toReturn = [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+      ]
+
+      for (let i = 0; i < data.timeTable.length; i++) {
+        const element = data.timeTable[i];
+        if(element.length > 0){
+          var element1D = Array.prototype.concat.apply([], element);
+
+          if(data.earliestTime!=undefined && element1D[0].valueOf() != data.earliestTime.valueOf()){
+            element1D.splice(0,0,data.earliestTime)
+          }
+          if(data.earliestTime!=undefined && element1D[element1D.length-1].valueOf() != data.latestTime.valueOf()){
+            element1D.splice(element1D.length,0,data.latestTime)
+          }
+
+          // in element1D
+          var tmpRow = toReturn[i]
+          const timeLength = element1D[element1D.length-1].valueOf() - element1D[0].valueOf()
+          for (let j = 0; j < element1D.length-1; j++) {
+            const a = element1D[j].valueOf();
+            const b = element1D[j+1].valueOf();
+            const periodLength = b-a;
+            const plainElement = element.map(function (s) {
+              const tmpPeriod = [s[0].valueOf(),s[1].valueOf()]
+              return tmpPeriod
+            })
+
+            const include = function (arr2D,arr1D) {
+              for (let q = 0; q < arr2D.length; q++) {
+                const element = arr2D[q];
+                if(element[0]==arr1D[0] && element[1]==arr1D[1]){
+                  return true
+                }
+              }
+              return false
+            }
+            const substantial = include(plainElement,[a,b])
+
+            const ratio = `${100*periodLength/timeLength}%`
+            tmpRow.push({ratio: ratio, substantial: substantial})
+          }
+        }
+      }
+      return toReturn
+    }
+  },
   /**
    * Component methods
    */
   methods: {
     attached: function(){
-
+    },
+    updateEarliestTime: function (time) {
+      if( this.data.earliestTime == undefined){
+        this.data.earliestTime = time
+      }else if (this.data.earliestTime > time){
+        this.data.earliestTime = time
+      }
+    },
+    updateLatestTime: function(time){
+      if( this.data.latestTime == undefined){
+        this.data.latestTime = time
+      }else if( this.data.latestTime < time){
+        this.data.latestTime = time
+      }
     },
     chooseLocation: function(){
       const that = this;
@@ -75,7 +146,8 @@ Component({
         name: this.data.name,
         address: this.data.address,
         location: this.data.location,
-        rooms: this.data.rooms
+        rooms: this.data.rooms,
+        openingTimePeriods2D: this.data.timeTable
       }
       wx.cloud.callFunction({
         name: 'applyAsPlaceHolder',
@@ -103,6 +175,8 @@ Component({
         // 取period第一个元素，在periods中找到一个地方，前小后大
         if(sortedPeriods.length == 0){
           sortedPeriods.push(period)
+          that.updateEarliestTime(period[0])
+          that.updateLatestTime(period[1])
           return;
         }else{
           for (let i = 0; i <= sortedPeriods.length; i++) {
@@ -110,23 +184,25 @@ Component({
             tmpPeriods.splice(i,0,period)
             //检查是否符合情况，符合的话直接返回函数
             if( i==0 ){
-              if((new TimeInADay(tmpPeriods[i][1])) < (new TimeInADay(tmpPeriods[i+1][0]))){
+              if(tmpPeriods[i][1] < tmpPeriods[i+1][0]){
                 sortedPeriods.splice(i,0,period)
+                that.updateEarliestTime(period[0])
                 return;
               }
             }else if(i==sortedPeriods.length){
-              if((new TimeInADay(tmpPeriods[i-1][1])) < (new TimeInADay(tmpPeriods[i][0]))){
+              if(tmpPeriods[i-1][1] < tmpPeriods[i][0]){
                 sortedPeriods.splice(i,0,period)
+                that.updateLatestTime(period[1])
                 return;
               }
             }else {
-              if( (new TimeInADay(tmpPeriods[i][1])) < (new TimeInADay(tmpPeriods[i+1][0])) && (new TimeInADay(tmpPeriods[i-1][1])) < (new TimeInADay(TimeInADay(tmpPeriods[i][0])))){
+              if( tmpPeriods[i][1] < tmpPeriods[i+1][0] && tmpPeriods[i-1][1] < tmpPeriods[i][0]){
                 sortedPeriods.splice(i,0,period)
                 return;
               }
             }
             //检查是否有必要进行下一轮
-            if( (new TimeInADay(tmpPeriods[i][0])) > (new TimeInADay(tmpPeriods[i+1][1])) ){
+            if( tmpPeriods[i][0] > tmpPeriods[i+1][1] ){
               continue
             }else {
               break
@@ -135,9 +211,15 @@ Component({
         }
       }
       addAPeriod(this.data.timeTable[this.data.currentSettingIndex], [...e.detail])
-      console.log(this.data.timeTable)
-      this.setData({isSettingUpPeriod: false})
+
+      this.setData({
+        isSettingUpPeriod: false, 
+        timeTable: this.data.timeTable,
+        earliestTime: this.data.earliestTime,
+        latestTime: this.data.latestTime
+      })
     }
     
   },
+  
 })
