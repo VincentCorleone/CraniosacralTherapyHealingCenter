@@ -19,8 +19,6 @@ Component({
       const currentUrl = `/${getCurrentPages()[0].route}`
       const urlTo = `/pages/${identity}Home/${identity}Home`
       
-      console.log(currentUrl)
-      console.log(urlTo)
 
       if (currentUrl!=urlTo){
         wx.navigateTo({

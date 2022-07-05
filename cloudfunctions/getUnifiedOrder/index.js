@@ -22,7 +22,6 @@ exports.main = async (event, context) => {
     "functionName": "pay_cb"
     // 回调函数的名称
   }
-  console.log(params)
   const res = await cloud.cloudPay.unifiedOrder(params)
   return res
 }

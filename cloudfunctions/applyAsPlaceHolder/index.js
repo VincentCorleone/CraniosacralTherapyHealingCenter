@@ -13,7 +13,6 @@ exports.main = async (event, context) => {
   db.collection('places').add({
     data: toInsert,
   })
-  console.log(event)
 
   return {
     event,
