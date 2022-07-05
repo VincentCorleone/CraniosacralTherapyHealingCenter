@@ -1,4 +1,6 @@
 // components/timeSelector/timeSelector.js
+const TimeInADay = require('../../utils/time.js')
+
 Component({
   /**
    * Component properties
@@ -31,7 +33,7 @@ Component({
       this.triggerEvent('close',{},{})
     },
     onConfirm: function() {
-      this.triggerEvent('confirm',this.data.currentTime,{})
+      this.triggerEvent('confirm',(new TimeInADay(this.data.currentTime)),{})
     },
     onInput: function(e) {
       this.setData({currentTime: e.detail})
