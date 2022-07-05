@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
   toInsert['holderOpenId'] = wxContext.OPENID
   db.collection('places').add({
     data: toInsert,
-  })
+  }).then(res => {console.log(res)})
 
   return {
     event,

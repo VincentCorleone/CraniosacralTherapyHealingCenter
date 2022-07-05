@@ -16,6 +16,7 @@ Component({
    * Component initial data
    */
   data: {
+    holderOpenId: '',
     name: '',
     address: '',
     location: {txtForHuman: ''},
@@ -41,6 +42,18 @@ Component({
     earliestTime: undefined
   },
 
+  lifetimes: {
+    attached: function(){
+      var that = this
+      wx.cloud.callFunction({
+        name: 'getPlaceAsPlaceHolder',
+      }).then(res => {
+        console.log(res.result) // 3
+        that.loadFromRemote(res.result)
+      })
+    }
+  },
+
   computed: {
     ratiosTable(data){
       var toReturn = [
@@ -53,43 +66,51 @@ Component({
           [],
       ]
 
-      for (let i = 0; i < data.timeTable.length; i++) {
-        const element = data.timeTable[i];
-        if(element.length > 0){
-          var element1D = Array.prototype.concat.apply([], element);
+      if( false ){
 
-          if(data.earliestTime!=undefined && element1D[0].valueOf() != data.earliestTime.valueOf()){
-            element1D.splice(0,0,data.earliestTime)
-          }
-          if(data.earliestTime!=undefined && element1D[element1D.length-1].valueOf() != data.latestTime.valueOf()){
-            element1D.splice(element1D.length,0,data.latestTime)
-          }
+      }else 
+      {
+        for (let i = 0; i < data.timeTable.length; i++) {
+          const element = data.timeTable[i];
+          if(element.length > 0){
+            var element1D = Array.prototype.concat.apply([], element);
 
-          // in element1D
-          var tmpRow = toReturn[i]
-          const timeLength = element1D[element1D.length-1].valueOf() - element1D[0].valueOf()
-          for (let j = 0; j < element1D.length-1; j++) {
-            const a = element1D[j].valueOf();
-            const b = element1D[j+1].valueOf();
-            const periodLength = b-a;
-            const plainElement = element.map(function (s) {
-              const tmpPeriod = [s[0].valueOf(),s[1].valueOf()]
-              return tmpPeriod
-            })
-
-            const include = function (arr2D,arr1D) {
-              for (let q = 0; q < arr2D.length; q++) {
-                const element = arr2D[q];
-                if(element[0]==arr1D[0] && element[1]==arr1D[1]){
-                  return true
-                }
-              }
-              return false
+            if(data.earliestTime!=undefined && element1D[0].valueOf() != data.earliestTime.valueOf()){
+              element1D.splice(0,0,data.earliestTime)
             }
-            const substantial = include(plainElement,[a,b])
+            if(data.earliestTime!=undefined && element1D[element1D.length-1].valueOf() != data.latestTime.valueOf()){
+              element1D.splice(element1D.length,0,data.latestTime)
+            }
 
-            const ratio = `${100*periodLength/timeLength}%`
-            tmpRow.push({ratio: ratio, substantial: substantial})
+            console.log(element1D)
+            // in element1D
+            var tmpRow = toReturn[i]
+            const timeLength = element1D[element1D.length-1].valueOf() - element1D[0].valueOf()
+            for (let j = 0; j < element1D.length-1; j++) {
+              const a = element1D[j].valueOf();
+              const b = element1D[j+1].valueOf();
+              const periodLength = b-a;
+              const plainElement = element.map(function (s) {
+                const tmpPeriod = [s[0].valueOf(),s[1].valueOf()]
+                return tmpPeriod
+              })
+
+              const include = function (arr2D,arr1D) {
+                for (let q = 0; q < arr2D.length; q++) {
+                  const element = arr2D[q];
+                  if(element[0]==arr1D[0] && element[1]==arr1D[1]){
+                    return true
+                  }
+                }
+                return false
+              }
+              const substantial = include(plainElement,[a,b])
+
+              const ratio = `${100*periodLength/timeLength}%`
+              tmpRow.push({ratio: ratio, substantial: substantial})
+            }
+            console.log(tmpRow)
+            console.log([data.earliestTime,data.latestTime])
           }
         }
       }
@@ -100,8 +121,6 @@ Component({
    * Component methods
    */
   methods: {
-    attached: function(){
-    },
     updateEarliestTime: function (time) {
       if( this.data.earliestTime == undefined){
         this.data.earliestTime = time
@@ -152,6 +171,28 @@ Component({
       wx.cloud.callFunction({
         name: 'applyAsPlaceHolder',
         data: toSubmit,
+      })
+    },
+    loadFromRemote: function (result) {
+      console.log(result)
+      const that = this
+      const timeTable = result.openingTimePeriods2D.map( element => element.map( eleB => eleB.map( eleC => new TimeInADay(`${eleC.hour}:${eleC.minute}`) )))
+      console.log(timeTable)
+      timeTable.forEach(element => {
+        if(element.length > 0){
+          that.updateEarliestTime(element[0].earliestTime)
+          that.updateLatestTime(element[element.length-1].latestTime)
+        }
+      });
+      this.setData({
+        holderOpenId: result.holderOpenId,
+        name: result.name,
+        address: result.address,
+        location: result.location,
+        rooms: result.rooms,
+        timeTable: timeTable,
+        earliestTime: this.data.earliestTime,
+        latestTime: this.data.latestTime
       })
     },
     next: function(){
