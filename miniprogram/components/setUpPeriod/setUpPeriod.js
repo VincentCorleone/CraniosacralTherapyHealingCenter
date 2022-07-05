@@ -16,7 +16,7 @@ Component({
   data: {
     isSettingUpTime: false,
     isSettingIndex: -1,
-    period: ['','']
+    period: [undefined,undefined]
   },
 
   /**
@@ -24,8 +24,6 @@ Component({
    */
   methods: {
     attached: function(){
-      console.log(this.properties.show)
-      console.log("attached")
     },
     
     onClose: function(){
@@ -35,7 +33,6 @@ Component({
     },
 
     setUpStartTime: function(){
-      
       this.data.isSettingIndex = 0
       this.setUpTime()
     },
@@ -56,8 +53,26 @@ Component({
     confirmSettingUpTime: function(e){
       var tmpPeriod = this.data.period
       tmpPeriod[this.data.isSettingIndex] = e.detail
-      console.log(tmpPeriod)
       this.setData({isSettingUpTime: false, period: tmpPeriod})
+    },
+
+    confirmPeriod: function(){
+      var isValid = function(startTime, endTime){
+        var startH,startM
+        [ startH,startM ] = startTime.split(":")
+        var endH,endM
+        [ endH,endM] = endTime.split(":")
+        if(parseInt(startH) < parseInt(endH)){
+          return true;
+        }else if (parseInt(startH)==parseInt(endH) && parseInt(startM) < parseInt(endM)){
+          return true;
+        }else{
+          return false;
+        }
+      }
+      if (this.data.period[0]!=undefined && this.data.period[1]!=undefined && isValid(this.data.period[0],this.data.period[1])){
+        this.triggerEvent("confirm", this.data.period,{})
+      }
     }
 
   }
