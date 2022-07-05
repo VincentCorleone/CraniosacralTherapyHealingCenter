@@ -68,7 +68,6 @@ Component({
     confirmSettingUpTime: function(e){
       var tmpPeriod = this.data.period
       tmpPeriod[this.data.isSettingIndex] = e.detail
-      console.log(tmpPeriod[0].toString())
       this.setData({isSettingUpTime: false, period: tmpPeriod})
     },
 
