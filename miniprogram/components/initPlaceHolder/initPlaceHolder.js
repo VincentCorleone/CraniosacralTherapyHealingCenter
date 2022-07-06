@@ -48,7 +48,6 @@ Component({
       wx.cloud.callFunction({
         name: 'getPlaceAsPlaceHolder',
       }).then(res => {
-        console.log(res.result) // 3
         that.loadFromRemote(res.result)
       })
     }
@@ -82,7 +81,6 @@ Component({
               element1D.splice(element1D.length,0,data.latestTime)
             }
 
-            console.log(element1D)
             // in element1D
             var tmpRow = toReturn[i]
             const timeLength = element1D[element1D.length-1].valueOf() - element1D[0].valueOf()
@@ -109,8 +107,6 @@ Component({
               const ratio = `${100*periodLength/timeLength}%`
               tmpRow.push({ratio: ratio, substantial: substantial})
             }
-            console.log(tmpRow)
-            console.log([data.earliestTime,data.latestTime])
           }
         }
       }
@@ -174,10 +170,8 @@ Component({
       })
     },
     loadFromRemote: function (result) {
-      console.log(result)
       const that = this
       const timeTable = result.openingTimePeriods2D.map( element => element.map( eleB => eleB.map( eleC => new TimeInADay(`${eleC.hour}:${eleC.minute}`) )))
-      console.log(timeTable)
       timeTable.forEach(element => {
         if(element.length > 0){
           that.updateEarliestTime(element[0].earliestTime)
