@@ -1,60 +1,68 @@
 <!--components/initPlaceHolder/initPlaceHolder.wxml-->
-<view id="initPlace" wx:if="{{ step==1 }}">
-  <van-cell-group>
-    <van-field
-      model:value="{{ name }}"
-      label="场所名称"
-      placeholder="请输入场所名称"
-      border="{{ false }}"
-      bind:change="onChange"
-    />
-    <van-field
-      model:value="{{ address }}"
-      label="场所详细地址"
-      placeholder="请输入场所详细地址"
-      border="{{ false }}"
-      bind:change="onChange"
-    />
-    <van-field
-      value="{{ location.txtForHuman }}"
-      label="定位"
-      placeholder="请点击我后在地图中选择位置"
-      border="{{ false }}"
-      readonly
-      bindtap="chooseLocation"
-      bind:change="onChange"
-    />
-    <van-field model:value="{{ newRoom }}" label="房间" placeholder="请输入房间名字后点击左下+号">
-    </van-field>
-    <van-icon name="add" bindtap="addRoom"></van-icon>
-    <view wx:for="{{ rooms }}">
-      <van-tag wx:if="{{ index==selectedRoomIndex }}" type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
-      <van-tag wx:else plain type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
-    </view>
-    <view wx:if="{{ selectedRoomIndex > -1}}">
-      <van-field model:value="{{ newBed }}" label="床位" placeholder="请输入床位名字后点击左下+号">
+<view wx:if="{{ holderOpenId == '' }}">
+  <view id="initPlace" wx:if="{{ step==1 }}">
+  <view>
+    <van-cell-group>
+      <van-field
+        model:value="{{ name }}"
+        label="场所名称"
+        placeholder="请输入场所名称"
+        border="{{ false }}"
+        bind:change="onChange"
+      />
+      <van-field
+        model:value="{{ address }}"
+        label="场所详细地址"
+        placeholder="请输入场所详细地址"
+        border="{{ false }}"
+        bind:change="onChange"
+      />
+      <van-field
+        value="{{ location.txtForHuman }}"
+        label="定位"
+        placeholder="请点击我后在地图中选择位置"
+        border="{{ false }}"
+        readonly
+        bindtap="chooseLocation"
+        bind:change="onChange"
+      />
+      <van-field model:value="{{ newRoom }}" label="房间" placeholder="请输入房间名字后点击左下+号">
       </van-field>
-      <van-icon name="add" bindtap="addBed"></van-icon>
-      <view wx:for="{{ rooms[selectedRoomIndex].beds }}">
-        <van-tag plain type="primary">{{ item }}</van-tag>
+      <van-icon name="add" bindtap="addRoom"></van-icon>
+      <view wx:for="{{ rooms }}">
+        <van-tag wx:if="{{ index==selectedRoomIndex }}" type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
+        <van-tag wx:else plain type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
       </view>
-    </view>
+      <view wx:if="{{ selectedRoomIndex > -1}}">
+        <van-field model:value="{{ newBed }}" label="床位" placeholder="请输入床位名字后点击左下+号">
+        </van-field>
+        <van-icon name="add" bindtap="addBed"></van-icon>
+        <view wx:for="{{ rooms[selectedRoomIndex].beds }}">
+          <van-tag plain type="primary">{{ item }}</van-tag>
+        </view>
+      </view>
+    </van-cell-group>
+  </view>
     <van-button type="primary" bindtap="next">下一步</van-button>
-  </van-cell-group>
+  </view>
+
+  <view id="initPlacesOpeningTime" style="height: 100%;" wx:elif="{{ step==2 }}">
+    <view wx:for="{{ [ '日','一','二','三','四','五','六' ]}}" style="height: {{ 100/7 }}%; display: flex; flex-direction:row;">
+      <text style="writing-mode: vertical-lr;">周{{ item }}</text>
+      <view wx:if="{{ ratiosTable[index].length > 0 }}" style="display: flex; flex-direction: row; width: 100%;" bindtap="setUpOpeningPeriods" data-index="{{ index}}">
+        <view wx:for="{{ ratiosTable[index] }}" style="{{ item.substantial? 'background: blueviolet; ':''}}height: 100%; width: {{ item.ratio }}">
+        </view>
+      </view>
+      <view wx:else style="width: 100%; text-align: center;" bindtap="setUpOpeningPeriods" data-index="{{ index}}">请点击此处以设置开放时间段</view>
+    </view>
+    <van-button type="primary" bindtap="apply">提交</van-button>
+    <set-up-period show="{{ isSettingUpPeriod }}" bind:confirm="onConfirmPeriod" bind:close="onCancelPeriod">
+    </set-up-period>
+  </view>
 </view>
 
-<view id="initPlacesOpeningTime" style="height: 100%;" wx:elif="{{ step==2 }}">
-  <view wx:for="{{ [ '日','一','二','三','四','五','六' ]}}" style="height: {{ 100/7 }}%; display: flex; flex-direction:row;">
-    <text style="writing-mode: vertical-lr;">周{{ item }}</text>
-    <view wx:if="{{ ratiosTable[index].length > 0 }}" style="display: flex; flex-direction: row; width: 100%;" bindtap="setUpOpeningPeriods" data-index="{{ index}}">
-      <view wx:for="{{ ratiosTable[index] }}" style="{{ item.substantial? 'background: blueviolet; ':''}}height: 100%; width: {{ item.ratio }}">
-      </view>
-    </view>
-    <view wx:else style="width: 100%; text-align: center;" bindtap="setUpOpeningPeriods" data-index="{{ index}}">请点击此处以设置开放时间段</view>
-  </view>
-  <van-button type="primary" bindtap="apply">提交</van-button>
-  <set-up-period show="{{ isSettingUpPeriod }}" bind:confirm="onConfirmPeriod" bind:close="onCancelPeriod">
-  </set-up-period>
+<view wx:else>
+  已提交申请，请等待审核结果
 </view>
 
 

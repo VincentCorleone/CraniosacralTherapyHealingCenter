@@ -1,5 +1,7 @@
 node_modules
 /miniprogram/miniprogram_npm
 
+package-lock.json
+
 /cloudfunctions/getUnifiedOrder/package-lock.json
 cloudfunctions/getUnifiedOrder/package-lock.json

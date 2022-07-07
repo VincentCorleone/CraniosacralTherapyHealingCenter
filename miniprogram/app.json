@@ -7,7 +7,7 @@
     "to-develop": "components/toDevelop/toDevelop",
     "healers": "/components/healers/index",
     "ticket": "/components/ticket/index",
-    "abouti": "/components/i/index",
+    "switch-identity": "/components/switchIdentity/index",
     "van-cell": "/miniprogram_npm/@vant/weapp/cell",
     "van-popup": "/miniprogram_npm/@vant/weapp/popup",
     "van-tabbar": "/miniprogram_npm/@vant/weapp/tabbar",

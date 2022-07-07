@@ -4,15 +4,16 @@
   <view style="height: 100%;" wx:if="{{ active=='healers' }}">
     <init-place-holder></init-place-holder>
   </view>
+
+  <view wx:else>
+    <switch-identity></switch-identity>
+    <to-develop></to-develop>
+  </view>
   
-  <!-- <healers wx:if="{{ active=='healers' }}"></healers> -->
-  <ticket wx:elif="{{ active=='ticket' }}"></ticket>
-  <to-develop wx:else="{{ active=='i' }}"></to-develop>
 </view>
 
 
 <van-tabbar active="{{ active }}" bind:change="onChange">
-  <van-tabbar-item name="healers" icon="friends-o">疗愈师们</van-tabbar-item>
-  <van-tabbar-item name="ticket" icon="bill-o">票据</van-tabbar-item>
+  <van-tabbar-item name="healers" icon="calendar-o">日历</van-tabbar-item>
   <van-tabbar-item name="i" icon="smile-o">我</van-tabbar-item>
 </van-tabbar>
