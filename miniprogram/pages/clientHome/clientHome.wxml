@@ -2,7 +2,7 @@
 <view>
   <healers wx:if="{{ active=='healers' }}"></healers>
   <ticket wx:if="{{ active=='ticket' }}"></ticket>
-  <abouti wx:if="{{ active=='i' }}"></abouti>
+  <switch-identity wx:if="{{ active=='i' }}"></switch-identity>
 </view>
 
 
