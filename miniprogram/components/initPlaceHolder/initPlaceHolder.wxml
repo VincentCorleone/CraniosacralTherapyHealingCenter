@@ -63,6 +63,7 @@
 
 <view wx:else>
   已提交申请
+  <mdc-button></mdc-button>
 </view>
 
 
