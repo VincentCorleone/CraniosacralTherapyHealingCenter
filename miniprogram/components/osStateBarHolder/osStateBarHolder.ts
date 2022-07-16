@@ -20,7 +20,7 @@ Component({
       this.setData({
         h: statusBarHeight
       });
-      console.log(wx.getMenuButtonBoundingClientRect());
+      // console.log(wx.getMenuButtonBoundingClientRect());
     }
   },
 
