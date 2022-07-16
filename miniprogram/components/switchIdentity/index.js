@@ -6,8 +6,20 @@ Component({
    */
   data: {
     show: false,
+    identity: "疗愈客",
+    identityMap: {
+      client: '疗愈客',
+      healer: '疗愈师',
+      placeHolder: '场地运营方'
+    }
   },
 
+  lifetimes: {
+    attached: function name(params) {
+      const key = getCurrentPages()[0].route.split('/')[1].split('Home')[0]
+      this.setData({identity: this.data.identityMap[key]})
+    }
+  },
 
   methods: {
     showPopup() {
