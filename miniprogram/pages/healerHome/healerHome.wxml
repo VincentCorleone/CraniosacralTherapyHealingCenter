@@ -1,14 +1,14 @@
 <!--pages/healerHome/healerHome.wxml-->
 <os-state-bar-holder></os-state-bar-holder>
 <view>
-  <healers wx:if="{{ active=='healers' }}"></healers>
-  <ticket wx:if="{{ active=='ticket' }}"></ticket>
+  <to-develop wx:if="{{ active=='healers' }}"></to-develop>
+  <to-develop wx:if="{{ active=='ticket' }}"></to-develop>
   <switch-identity wx:if="{{ active=='i' }}"></switch-identity>
 </view>
 
 
 <van-tabbar active="{{ active }}" bind:change="onChange">
-  <van-tabbar-item name="healers" icon="friends-o">疗愈师们</van-tabbar-item>
-  <van-tabbar-item name="ticket" icon="bill-o">票据</van-tabbar-item>
+  <van-tabbar-item name="healers" icon="warning-o">待定</van-tabbar-item>
+  <van-tabbar-item name="ticket" icon="warning-o">待定</van-tabbar-item>
   <van-tabbar-item name="i" icon="smile-o">我</van-tabbar-item>
 </van-tabbar>
