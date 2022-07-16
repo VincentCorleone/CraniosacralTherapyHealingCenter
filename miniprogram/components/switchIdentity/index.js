@@ -21,8 +21,8 @@ Component({
       
 
       if (currentUrl!=urlTo){
-        wx.navigateTo({
-          url: urlTo,
+        wx.reLaunch({
+          url: urlTo
         })
       }
 
