@@ -1,5 +1,5 @@
 <!--pages/placeHolderHome/placeHolderHome.wxml-->
-
+<os-state-bar-holder></os-state-bar-holder>
 <view style="height: 100%;">
   <view style="height: 100%;" wx:if="{{ active=='healers' }}">
     <init-place-holder></init-place-holder>

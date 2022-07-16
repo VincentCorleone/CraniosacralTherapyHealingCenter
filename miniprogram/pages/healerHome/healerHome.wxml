@@ -1,4 +1,5 @@
 <!--pages/healerHome/healerHome.wxml-->
+<os-state-bar-holder></os-state-bar-holder>
 <view>
   <healers wx:if="{{ active=='healers' }}"></healers>
   <ticket wx:if="{{ active=='ticket' }}"></ticket>
