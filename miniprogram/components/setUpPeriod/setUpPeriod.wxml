@@ -1,6 +1,4 @@
 <!--components/setUpPeriod/setUpPeriod.wxml-->
-<text>components/setUpPeriod/setUpPeriod.wxml</text>
-
 <van-popup show="{{ show }}" bind:close="onClose">
   <h1>添加一个开放时间段</h1>
   <van-field label="起始时间" value="{{ startTime }}" placeholder="点击以设置" readonly bindtap="setUpStartTime"></van-field>
