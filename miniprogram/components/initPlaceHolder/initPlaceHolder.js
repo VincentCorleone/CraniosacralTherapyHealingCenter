@@ -45,7 +45,7 @@ Component({
 
   observers: {
     'remoteData': function (remoteData) {
-      if( Object.keys(remoteData).length>0 ){
+      if( remoteData!=undefined && Object.keys(remoteData).length>0 ){
         this.loadFromRemote(remoteData)
       }
     }
@@ -155,14 +155,22 @@ Component({
       this.setData({selectedRoomIndex:tmpIndex})
     },
     submit: async function (data) {
-      const toSubmit = {
+      const toSubmit1 = {
         ...data,
-        _id: this.data.remoteData._id,
         name: this.data.name,
         address: this.data.address,
         location: this.data.location,
         rooms: this.data.rooms,
         openingTimePeriods2D: this.data.timeTable,
+      }
+      var toSubmit = {};
+      if(this.data.remoteData!=null && this.data.remoteData._id!=null){
+        toSubmit = {
+          ...toSubmit1,
+          _id: this.data.remoteData._id
+        };
+      }else{
+        toSubmit = toSubmit1;
       }
 
       await wx.cloud.callFunction({
@@ -170,8 +178,11 @@ Component({
         data: toSubmit,
       })
     },
-    save: function(){
-      this.submit({action: 'save'})
+    save: async function(){
+      await this.submit({action: 'save'})
+      wx.reLaunch({
+        url: '/pages/placeHolderHome/placeHolderHome',
+      })
     },
     apply: async function (params) {
       await this.submit({action: 'apply'})

@@ -79,7 +79,7 @@ const entry = async (event, context) => {
           data: {
             ...toInsert,
             holderOpenId: wxContext.OPENID,
-            status: 'saved'
+            status: 'submitted'
           }
         }).then(res => {console.log(res)})
       }else {
