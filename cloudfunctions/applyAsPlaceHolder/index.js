@@ -46,7 +46,6 @@ const entry = async (event, context) => {
 
   const db = cloud.database()
   const toInsert = {
-    holderOpenId: wxContext.OPENID,
     name: event.name,
     address: event.address,
     location: event.location,
@@ -55,20 +54,42 @@ const entry = async (event, context) => {
   }
 
   if( event.action=="save"){
-    db.collection('places').add({
-      data: {
-        ...toInsert,
-        status: 'saved'
-      }
-    }).then(res => {console.log(res)})
-  }else if( event.action=="apply"){
-    if(validate(toInsert)){
+    if(event._id == null){
       db.collection('places').add({
         data: {
           ...toInsert,
-          status: 'submitted'
+          holderOpenId: wxContext.OPENID,
+          status: 'saved'
         }
       }).then(res => {console.log(res)})
+    }else{
+      db.collection('places').doc(event._id).update({
+        data: {
+          ...toInsert,
+          status: 'saved'
+        }
+      }).then(res => {console.log(res)})
+    }
+
+
+  }else if( event.action=="apply"){
+    if(validate(toInsert)){
+      if(event._id == null){
+        db.collection('places').add({
+          data: {
+            ...toInsert,
+            holderOpenId: wxContext.OPENID,
+            status: 'saved'
+          }
+        }).then(res => {console.log(res)})
+      }else {
+        db.collection('places').doc(event._id).update({
+          data: {
+            ...toInsert,
+            status: 'submitted'
+          }
+        }).then(res => {console.log(res)})
+      }
     }
   }
 

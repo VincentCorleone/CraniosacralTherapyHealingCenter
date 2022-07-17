@@ -157,6 +157,7 @@ Component({
     submit: function (data) {
       const toSubmit = {
         ...data,
+        _id: this.data.remoteData._id,
         name: this.data.name,
         address: this.data.address,
         location: this.data.location,
