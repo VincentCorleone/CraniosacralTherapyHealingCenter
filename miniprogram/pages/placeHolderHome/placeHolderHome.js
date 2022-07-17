@@ -17,11 +17,13 @@ Page({
    * Lifecycle function--Called when page load
    */
   async onLoad(options) {
-
     const res = await wx.cloud.callFunction({
       name: 'getPlaceAsPlaceHolder',
     })
-    this.data.originPlace = res.result;
+    // this.data.originPlace = res.result
+    this.setData({
+      originPlace: res.result
+    })
   },
 
   /**
