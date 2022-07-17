@@ -157,6 +157,7 @@ Component({
     submit: function (data) {
       const toSubmit = {
         ...data,
+        name: this.data.name,
         address: this.data.address,
         location: this.data.location,
         rooms: this.data.rooms,
