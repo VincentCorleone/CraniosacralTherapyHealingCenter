@@ -9,7 +9,7 @@ Component({
    * Component properties
    */
   properties: {
-
+    remoteData: {}
   },
 
   /**
@@ -37,19 +37,17 @@ Component({
       [],
       [],
     ],
+    status: '',
     currentSettingIndex: undefined,
     latestTime: undefined,
     earliestTime: undefined
   },
 
-  lifetimes: {
-    attached: function(){
-      var that = this
-      wx.cloud.callFunction({
-        name: 'getPlaceAsPlaceHolder',
-      }).then(res => {
-        that.loadFromRemote(res.result)
-      })
+  observers: {
+    'remoteData': function (remoteData) {
+      if( Object.keys(remoteData).length>0 ){
+        this.loadFromRemote(remoteData)
+      }
     }
   },
 
@@ -156,18 +154,25 @@ Component({
       const tmpIndex = event.currentTarget.dataset.index;
       this.setData({selectedRoomIndex:tmpIndex})
     },
-    apply: function(){
+    submit: function (data) {
       const toSubmit = {
-        name: this.data.name,
+        ...data,
         address: this.data.address,
         location: this.data.location,
         rooms: this.data.rooms,
-        openingTimePeriods2D: this.data.timeTable
+        openingTimePeriods2D: this.data.timeTable,
       }
+
       wx.cloud.callFunction({
         name: 'applyAsPlaceHolder',
         data: toSubmit,
       })
+    },
+    save: function(){
+      this.submit({action: 'save'})
+    },
+    apply: function name(params) {
+      this.submit({action: 'apply'})
     },
     loadFromRemote: function (result) {
       const that = this

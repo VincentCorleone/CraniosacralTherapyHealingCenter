@@ -1,5 +1,5 @@
 <!--components/initPlaceHolder/initPlaceHolder.wxml-->
-<view wx:if="{{ holderOpenId == '' }}">
+<view style="height: 100%;">
   <view id="initPlace" wx:if="{{ step==1 }}">
     <view>
       <van-cell-group>
@@ -55,15 +55,11 @@
       </view>
       <view wx:else style="width: 100%; text-align: center;" bindtap="setUpOpeningPeriods" data-index="{{ index}}">请点击此处以设置开放时间段</view>
     </view>
-    <van-button type="primary" bindtap="apply">提交</van-button>
+    <van-button type="primary" bindtap="save">保存</van-button>
+    <van-button type="primary" bindtap="apply">申请</van-button>
     <set-up-period show="{{ isSettingUpPeriod }}" bind:confirm="onConfirmPeriod" bind:close="onCancelPeriod">
     </set-up-period>
   </view>
-</view>
-
-<view wx:else>
-  已提交申请
-  <mdc-button></mdc-button>
 </view>
 
 
