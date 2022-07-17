@@ -154,7 +154,7 @@ Component({
       const tmpIndex = event.currentTarget.dataset.index;
       this.setData({selectedRoomIndex:tmpIndex})
     },
-    submit: function (data) {
+    submit: async function (data) {
       const toSubmit = {
         ...data,
         _id: this.data.remoteData._id,
@@ -165,7 +165,7 @@ Component({
         openingTimePeriods2D: this.data.timeTable,
       }
 
-      wx.cloud.callFunction({
+      await wx.cloud.callFunction({
         name: 'applyAsPlaceHolder',
         data: toSubmit,
       })
@@ -173,8 +173,11 @@ Component({
     save: function(){
       this.submit({action: 'save'})
     },
-    apply: function name(params) {
-      this.submit({action: 'apply'})
+    apply: async function (params) {
+      await this.submit({action: 'apply'})
+      wx.reLaunch({
+        url: '/pages/placeHolderHome/placeHolderHome',
+      })
     },
     loadFromRemote: function (result) {
       const that = this
