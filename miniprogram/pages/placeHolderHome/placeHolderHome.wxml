@@ -5,7 +5,7 @@
 </view>
 
 <view wx:elif="{{ originPlace.status=='submitted' }}" style="height: 100%;">
-  <text>已提交申请，请等待承认</text>
+  <text>已提交申请，请等待承认,点击任意位置回到首页</text>
 </view>
 
 <view wx:elif="{{ originPlace.status=='admitted' }}">
