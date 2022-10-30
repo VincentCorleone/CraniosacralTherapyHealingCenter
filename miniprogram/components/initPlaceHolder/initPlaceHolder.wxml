@@ -28,17 +28,17 @@
         />
         <van-field model:value="{{ newRoom }}" label="房间" placeholder="请输入房间名字后点击左下+号">
         </van-field>
-        <van-icon name="add" bindtap="addRoom"></van-icon>
+        <van-icon size="30" name="add" bindtap="addRoom"></van-icon>
         <view wx:for="{{ rooms }}">
-          <van-tag wx:if="{{ index==selectedRoomIndex }}" type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
-          <van-tag wx:else plain type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
+          <van-tag size="large" wx:if="{{ index==selectedRoomIndex }}" type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
+          <van-tag size="large" wx:else plain type="primary" bindtap="selectRoom" data-index='{{ index }}'>{{ item.name }}</van-tag>
         </view>
         <view wx:if="{{ selectedRoomIndex > -1}}">
           <van-field model:value="{{ newBed }}" label="床位" placeholder="请输入床位名字后点击左下+号">
           </van-field>
-          <van-icon name="add" bindtap="addBed"></van-icon>
+          <van-icon size="30" name="add" bindtap="addBed"></van-icon>
           <view wx:for="{{ rooms[selectedRoomIndex].beds }}">
-            <van-tag plain type="primary">{{ item }}</van-tag>
+            <van-tag size="large" plain type="primary">{{ item }}</van-tag>
           </view>
         </view>
       </van-cell-group>
@@ -59,6 +59,12 @@
     <van-button type="primary" bindtap="apply">申请</van-button>
     <set-up-period show="{{ isSettingUpPeriod }}" bind:confirm="onConfirmPeriod" bind:close="onCancelPeriod">
     </set-up-period>
+  </view>
+
+  <view wx:elif="{{ step==3}}">
+    <text>请及时保存场馆二维码并张贴</text>
+    <van-button bindtap="downloadQrCode">下载场馆二维码</van-button>
+    <van-button type="warning">关闭</van-button>
   </view>
 </view>
 
