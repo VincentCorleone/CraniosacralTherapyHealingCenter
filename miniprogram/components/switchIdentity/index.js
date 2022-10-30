@@ -10,7 +10,8 @@ Component({
     identityMap: {
       client: '疗愈客',
       healer: '疗愈师',
-      placeHolder: '场地运营方'
+      placeHolder: '场地运营方',
+      systemRunner: '系统运营方'
     }
   },
 
