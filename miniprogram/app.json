@@ -20,8 +20,8 @@
     "time-selector": "/components/timeSelector/timeSelector"
   },
   "pages": [
-    "pages/placeHolderHome/placeHolderHome",
     "pages/clientHome/clientHome",
+    "pages/placeHolderHome/placeHolderHome",
     "pages/getOpenId/index",
     "pages/getMiniProgramCode/index",
     "pages/deployService/index",
