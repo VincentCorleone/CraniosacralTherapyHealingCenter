@@ -1,7 +1,7 @@
 <!--components/healerListItem/index.wxml-->
 <navigator url="/pages/healerDetail/index?healerId={{ healerId }}" hover-class="navigator-hover">
-<view style="display:flex; flex-direction:row;">
-  <image style="height: 150rpx; width: 150rpx; margin-left: 30rpx;" src="{{ avatarUrl }}"></image> 
+<view style="display:flex; flex-direction:row; margin-bottom: 10px;">
+  <image style="border-radius:20px; height: 150rpx; width: 150rpx; margin-left: 30rpx;" src="{{ avatarUrl }}"></image> 
   <view style="display:flex; flex-direction: column; margin-left: 30rpx;">
     <view style="display:flex; flex-direction: row;">
       <text>{{ healerName }}</text>
