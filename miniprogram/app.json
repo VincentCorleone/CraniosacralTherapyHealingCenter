@@ -35,7 +35,8 @@
     "pages/sumRecordResult/index",
     "pages/healerDetail/index",
     "pages/healerHome/healerHome",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/systemRunnerHome/systemRunnerHome"
   ],
   "plugins": {
     "chooseLocation": {
