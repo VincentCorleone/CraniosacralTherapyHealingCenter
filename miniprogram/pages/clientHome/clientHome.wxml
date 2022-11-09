@@ -1,14 +1,17 @@
 <!--pages/clientHome/clientHome.wxml-->
 <os-state-bar-holder></os-state-bar-holder>
-<view>
-  <healers wx:if="{{ active=='healers' }}"></healers>
-  <ticket wx:if="{{ active=='ticket' }}"></ticket>
-  <switch-identity wx:if="{{ active=='i' }}"></switch-identity>
-</view>
+<scroll-view scroll-y="true" style="height: 605px;">
+  <view>
+    <healers wx:if="{{ active=='healers' }}"></healers>
+    <ticket wx:if="{{ active=='ticket' }}"></ticket>
+    <switch-identity wx:if="{{ active=='i' }}"></switch-identity>
+  </view>
 
+
+</scroll-view>
 
 <van-tabbar active="{{ active }}" bind:change="onChange">
-  <van-tabbar-item name="healers" icon="friends-o">疗愈师们</van-tabbar-item>
-  <van-tabbar-item name="ticket" icon="bill-o">票据</van-tabbar-item>
-  <van-tabbar-item name="i" icon="smile-o">我</van-tabbar-item>
-</van-tabbar>
+    <van-tabbar-item name="healers" icon="friends-o">疗愈师们</van-tabbar-item>
+    <van-tabbar-item name="ticket" icon="bill-o">票据</van-tabbar-item>
+    <van-tabbar-item name="i" icon="smile-o">我</van-tabbar-item>
+  </van-tabbar>
