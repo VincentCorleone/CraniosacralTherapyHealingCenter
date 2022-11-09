@@ -73,5 +73,12 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+
+  ontap(e){ 
+    console.log("dfdfs")
+    wx.reLaunch({
+      url: '/pages/clientHome/clientHome',
+    })
+  },
 })

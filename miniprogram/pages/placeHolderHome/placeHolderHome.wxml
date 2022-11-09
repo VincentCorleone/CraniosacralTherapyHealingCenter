@@ -1,6 +1,9 @@
 <!--pages/placeHolderHome/placeHolderHome.wxml-->
 <os-state-bar-holder></os-state-bar-holder>
-<view wx:if="{{ originPlace.status==undefined || originPlace.status=='saved' }}" style="height: 100%;">
+<scroll-view style="height:100%" bindtap="ontap">
+
+
+<view  wx:if="{{ originPlace.status==undefined || originPlace.status=='saved' }}" style="height: 100%;" ontap="ontap">
   <init-place-holder remoteData="{{ originPlace }}"></init-place-holder>
 </view>
 
@@ -25,3 +28,5 @@
     <van-tabbar-item name="i" icon="smile-o">我</van-tabbar-item>
   </van-tabbar>
 </view>
+
+</scroll-view>
