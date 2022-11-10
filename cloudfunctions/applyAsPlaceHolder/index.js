@@ -1,6 +1,10 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
+const { genZipFromPlace } = require('../main')
+
+
+
 cloud.init()
 
 
@@ -53,6 +57,8 @@ const entry = async (event, context) => {
     openingTimePeriods2D: event.openingTimePeriods2D,
   }
 
+  var message = "failed"
+
   if( event.action=="save"){
     if(event._id == null){
       db.collection('places').add({
@@ -61,14 +67,14 @@ const entry = async (event, context) => {
           holderOpenId: wxContext.OPENID,
           status: 'saved'
         }
-      }).then(res => {console.log(res)})
+      }).then(res => {console.log(res);message="okay";})
     }else{
       db.collection('places').doc(event._id).update({
         data: {
           ...toInsert,
           status: 'saved'
         }
-      }).then(res => {console.log(res)})
+      }).then(res => {console.log(res);message="okay";})
     }
 
 
@@ -81,21 +87,37 @@ const entry = async (event, context) => {
             holderOpenId: wxContext.OPENID,
             status: 'submitted'
           }
-        }).then(res => {console.log(res)})
+        }).then(res => {
+          // const originPlace  = {
+          //     name: "创业花园",
+          //     rooms: [
+          //         {
+          //           beds: [
+          //             "123"
+          //           ],
+          //           name: "床"
+          //         }
+          //     ]
+          // }
+          
+          genZipFromPlace(toInsert)
+          console.log(res);
+          message="okay";
+        })
       }else {
         db.collection('places').doc(event._id).update({
           data: {
             ...toInsert,
             status: 'submitted'
           }
-        }).then(res => {console.log(res)})
+        }).then(res => {console.log(res);message="okay";})
       }
     }
   }
 
 
   return {
-    msg: "applyAspplaceHolder:ok"
+    msg: message
   }
 }
 
