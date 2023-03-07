@@ -15,6 +15,7 @@
     "van-tabbar": "/miniprogram_npm/@vant/weapp/tabbar",
     "van-tabbar-item": "/miniprogram_npm/@vant/weapp/tabbar-item",
     "van-field": "/miniprogram_npm/@vant/weapp/field",
+    "van-sticky": "/miniprogram_npm/@vant/weapp/sticky",
     "init-place-holder": "/components/initPlaceHolder/initPlaceHolder",
     "set-up-period": "/components/setUpPeriod/setUpPeriod",
     "time-selector": "/components/timeSelector/timeSelector"

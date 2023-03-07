@@ -1,4 +1,8 @@
 // components/osStateBarHolder/osStateBarHolder.ts
+var appInstance = getApp()
+console.log(appInstance) 
+
+
 Component({
   /**
    * Component properties
@@ -18,10 +22,10 @@ Component({
     attached: async function(){
       const statusBarHeight = (await wx.getSystemInfo()).statusBarHeight;
       this.setData({
-        h: statusBarHeight
+        h: appInstance.globalData.statusBarHeight,
       });
       // console.log(wx.getMenuButtonBoundingClientRect());
-    }
+    },
   },
 
   /**

@@ -1,13 +1,17 @@
 <!--pages/clientHome/clientHome.wxml-->
-<os-state-bar-holder></os-state-bar-holder>
-<scroll-view scroll-y="true" style="height: 605px;">
+<van-sticky>
+  <os-state-bar-holder></os-state-bar-holder>
+  <view style="display: block; height: {{ h }}px;width: 100%;background: yellow;"></view>
+
+  <!-- (24-24)x2 + 32 -->
+</van-sticky>
+
+<scroll-view scroll-y="true" style="height: 705px;">
   <view>
     <healers wx:if="{{ active=='healers' }}"></healers>
     <ticket wx:if="{{ active=='ticket' }}"></ticket>
     <switch-identity wx:if="{{ active=='i' }}"></switch-identity>
   </view>
-
-
 </scroll-view>
 
 <van-tabbar active="{{ active }}" bind:change="onChange">

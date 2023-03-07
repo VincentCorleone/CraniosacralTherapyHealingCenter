@@ -1,4 +1,6 @@
 // pages/clientHome/clientHome.js
+const APP = getApp()
+
 Page({
 
   /**
@@ -6,6 +8,7 @@ Page({
    */
   data: {
     active: 'healers',
+    h: 0
   },
   
   onChange(event) {
@@ -30,7 +33,9 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow() {
-
+    this.setData({
+      h: APP.globalData.navHeight,
+    })
   },
 
   /**
