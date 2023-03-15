@@ -1,10 +1,13 @@
 // pages/healerDetail/healerDetail.js
+const APP = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    h: 0,
     multiIndex: [0, 0],
     multiArray: [[], []],
     timeObject: [
@@ -52,6 +55,9 @@ Page({
     // 地点选择器 - 数据 <<
   },
 
+  back: function (e) {
+    wx.navigateBack()
+  },
     // 地点选择器 - 函数 >>
   bindMultiPickerColumnChangeLocation: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
@@ -147,7 +153,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      h: APP.globalData.navHeight,
+    })
   },
 
   /**

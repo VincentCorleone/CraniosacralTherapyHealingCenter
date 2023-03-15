@@ -1,2 +1,2 @@
 <!--components/osStateBarHolder/osStateBarHolder.wxml-->
-<view id="space_holder" style="height: {{ h }}px;background: red;"></view>
+<view id="space_holder" style="height: {{ h }}px;background: blueviolet;"></view>

@@ -1,5 +1,10 @@
 <!--pages/healerDetail/healerDetail.wxml-->
 <view>
+  <os-state-bar-holder></os-state-bar-holder>
+  <view style="display: block; height: {{ h }}px;width: 100%;background: blueviolet;">
+    <van-icon bindtap="back" name="arrow-left" style="height: {{h}}px; width: {{h}}px;" />
+    <p>关于疗愈师</p>
+  </view>
   <view>
     <view style="display:flex; flex-direction:row;">
       <view style="display:flex; flex-direction:column;">

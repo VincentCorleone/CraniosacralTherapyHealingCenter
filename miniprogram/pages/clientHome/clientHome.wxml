@@ -1,8 +1,10 @@
 <!--pages/clientHome/clientHome.wxml-->
 <van-sticky>
   <os-state-bar-holder></os-state-bar-holder>
-  <view style="display: block; height: {{ h }}px;width: 100%;background: yellow;"></view>
-
+  <view style="display: block; height: {{ h }}px;width: 100%;background: blueviolet;">
+    <p style="line-height: {{ h }}px;padding-left: 10px">疗愈师们</p>
+  </view>
+  
   <!-- (24-24)x2 + 32 -->
 </van-sticky>
 
